@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="output.css" />
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="title1">
+		<p>在庫照会画面</p>
+	</div>
+
+	<form action="/"  method="post" onsubmit="return codeCheck()">
+		<div class="textbox1">
+			<p class="text1">コード</p>
+			<input type="number" name="codeValue" id="codeValue" min="0" /> 
+			<input class="button1" type="submit" value="照合" />
+		</div>
+	</form>
+	<div class="textbox2">
+		<p class="text2">数量</p>
+		<p id="outputValue" th:text="${stockQuantity}"></p>
+	</div>
+
+	<p class="button2">
+		<input type="button" onclick="location.href='/menu'" value="戻る" />
+	</p>
+
+	<script type="text/javascript">
+		function codeCheck() {
+			var codeValue = document.getElementById("codeValue").value;
+			var codeValueCount = document.getElementById("codeValue").value.length;
+			if (codeValue < 0 || codeValueCount != 6) {
+				alert("コードに整数6桁を入力してください");
+				return false;
+			} else {
+				return true;
+			}
+		}
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="input.css" />
+<title>Insert title here</title>
+</head>
+<body>
+	<p class="title1">在庫入力画面</p>
+	<div class="textbox1">
+		<p class="text1">コード</p>
+		<input type="number" id="codeValue" min="0"/>
+	</div>
+	<div class="textbox2">
+		<p class="text2">数量</p>
+		<input type="number" id="quantityValue" min="0"/>
+	</div>
+	<form action="" onsubmit="return allCheck()" >
+		<div class="button">
+			<p class="button1">
+				<input type="submit" value="登録" />
+			</p>
+			<p class="button2">
+				<input type="button" onclick="location.href='/menu'" value="戻る" />
+			</p>
+		</div>
+	</form>
+	<script type="text/javascript">
+	
+		function codeCheck() {
+			var codeValue = document.getElementById("codeValue").value;
+			var codeValueCount = document.getElementById("codeValue").value.length;
+			if (codeValue < 0 || codeValueCount != 6) {
+				alert("コードに整数6桁を入力してください");
+				return false;
+			}
+
+			else {
+				return true;
+			}
+		}
+
+		function quantityCheck() {
+			var quantityValue = document.getElementById("quantityValue").value;
+			var quantityValueCount = document.getElementById("quantityValue").value.length;
+			if (quantityValue < 0 || quantityValueCount == 0) {
+				alert("数量に整数を入力してください");
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+
+		function allCheck() {
+			if (codeCheck() && quantityCheck()) {
+				alert("OK");
+			}
+		}
+		
+	</script>
+</body>
+</html>
